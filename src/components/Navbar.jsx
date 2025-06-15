@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { MdOutlineSpaceDashboard } from "react-icons/md";
-
+import { CgDarkMode } from "react-icons/cg";
 const Navbar = () => {
   const [theme, setTheme] = useState(
     () => localStorage.getItem("theme") || "dark"
@@ -29,9 +29,9 @@ const Navbar = () => {
       </div>
       <button
         onClick={toggleTheme}
-        className="w-12 h-12 flex items-center justify-center rounded-full transition-all duration-300"
+        className="w-12 h-12 flex items-center justify-center rounded-full transition-all duration-300 cursor-pointer"
       >
-        Click
+        <CgDarkMode />
       </button>
     </div>
   );
