@@ -21,7 +21,7 @@ const Sidebar = () => {
 
       <div className="p-2">
         <ul className="p-0 flex flex-col gap-5 mt-4">
-          <Link to="/dashboardHome" className="flex gap-2.5 items-center">
+          <Link to="/" className="flex gap-2.5 items-center">
           <GrHome/>
             <li>Dashboard</li>
           </Link>
