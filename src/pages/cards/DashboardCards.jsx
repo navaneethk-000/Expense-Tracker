@@ -3,8 +3,8 @@ const DashboardCard = ({
   title,
   amount,
   description,
-//   Icon,
-//   TextIcon,
+  Icon,
+  TextIcon,
   iconSize = 24,
 }) => {
   return (
