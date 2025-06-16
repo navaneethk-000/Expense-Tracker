@@ -46,19 +46,6 @@ const TransactionCard = () => {
 
 export default TransactionCard;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 // import { FaIndianRupeeSign, FaArrowTrendUp } from "react-icons/fa6";
 
 // const TransactionCard = () => {
@@ -275,7 +262,7 @@ export default TransactionCard;
 //         </li>
 //       </ul>
 //       </div>
-      
+
 //     </div>
 //   );
 // };

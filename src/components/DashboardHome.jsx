@@ -46,15 +46,15 @@ const DashboardHome = () => {
       </div>
       <div className="flex gap-5 mt-10">
         <div className="border w-full p-5 rounded-2xl">
-        <div>
-          <h1 className="text-2xl font-bold">Expenses by Category</h1>
-          <p className="text-sm">Breakdown of your spending by category</p>
-        </div>
-          <div className="flex items-center justify-center">
-            <Chart/>
+          <div>
+            <h1 className="text-2xl font-bold">Expenses by Category</h1>
+            <p className="text-sm">Breakdown of your spending by category</p>
           </div>
-      </div>
-      <TransactionCard/>
+          <div className="flex items-center justify-center">
+            <Chart />
+          </div>
+        </div>
+        <TransactionCard />
       </div>
     </div>
   );

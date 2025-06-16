@@ -1,7 +1,7 @@
 import { PieChart, Pie, Cell } from 'recharts';
 
 const data = [
-  { name: 'Food', value: 37 },
+  { name: 'Food', value: 50 },
   { name: 'Bills', value: 50 },
   { name: 'Travel', value: 7 },
   { name: 'Entertainment', value: 7 },
