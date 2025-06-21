@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 
 const Dropdown = ({value,onChange}) => {
   const categories = [

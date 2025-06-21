@@ -1,49 +1,134 @@
 import { FaIndianRupeeSign, FaArrowTrendUp } from "react-icons/fa6";
 import { LuCalendar, LuReceiptIndianRupee } from "react-icons/lu";
-import DashboardCard from "../pages/cards/DashboardCards";
-import { GrTransaction } from "react-icons/gr";
 import Chart from "../pages/charts/Chart";
-import TransactionCard from "../pages/cards/TransactionCard";
 
-const cardsData = [
-  {
-    title: "Total Expenses",
-    amount: "240",
-    description: "All time total",
-    Icon: FaIndianRupeeSign,
-    TextIcon: FaIndianRupeeSign,
-  },
-  {
-    title: "This Month",
-    amount: "5240",
-    description: "0 Transactions",
-    Icon: LuCalendar,
-    TextIcon: FaIndianRupeeSign,
-  },
-  {
-    title: "Transactions",
-    amount: "4",
-    description: "Total recorded",
-    Icon: LuReceiptIndianRupee,
-    TextIcon: GrTransaction,
-  },
-  {
-    title: "Average",
-    amount: "85.52",
-    description: "Per transaction",
-    Icon: FaArrowTrendUp,
-    TextIcon: FaIndianRupeeSign,
-  },
-];
+import { StateContext } from "../context/ExpenseProvider";
+import { useContext } from "react";
 
 const DashboardHome = () => {
+  const { myExpenses } = useContext(StateContext);
+
+  const totalAmount = myExpenses.reduce((total, item) => {
+    const amount = parseFloat(item.amount);
+    return total + (isNaN(amount) ? 0 : amount);
+  }, 0);
+
+  <div className="md:flex gap-5">
+    {myExpenses.map((exp, index) => (
+      <div
+        className="bg-[var(--card-bg)] border w-full h-auto p-5 rounded-2xl flex justify-between items-start"
+        key={index}
+      >
+        <div>
+          <h2>{exp.title}</h2>
+          <div className="flex items-center gap-1">
+            <h1 className="text-2xl font-bold">{exp.amount}</h1>
+          </div>
+          <p className="text-[var(--secondary-text-color)] text-sm">
+            {exp.category}
+          </p>
+        </div>
+      </div>
+    ))}
+  </div>;
+
+  const categories = [
+    "Food",
+    "Bills",
+    "Travel",
+    "Entertainment",
+    "Shopping",
+    "Healthcare",
+    "Education",
+    "Other",
+  ];
+
+  const getCategoryAmounts = (category) =>
+    myExpenses
+      .filter((item) => item.category === category && item.amount)
+      .map((item) => parseFloat(item.amount))
+      .reduce((acc, curr) => acc + curr, 0);
+
+  const travelAmounts = getCategoryAmounts("Travel");
+  const billsAmounts = getCategoryAmounts("Bills");
+  const entertainmentAmounts = getCategoryAmounts("Entertainment");
+  const shoppingAmounts = getCategoryAmounts("Shopping");
+  const healthcareAmounts = getCategoryAmounts("Healthcare");
+  const educationAmounts = getCategoryAmounts("Education");
+  const otherAmounts = getCategoryAmounts("Other");
+
+  const toPercent = (amount) =>
+    totalAmount > 0 ? Math.round((amount / totalAmount) * 100) : 0;
+
+  const chartData = [
+    { name: "Travel", value: toPercent(travelAmounts) },
+    { name: "Bills", value: toPercent(billsAmounts) },
+    { name: "Entertainment", value: toPercent(entertainmentAmounts) },
+    { name: "Shopping", value: toPercent(shoppingAmounts) },
+    { name: "Healthcare", value: toPercent(healthcareAmounts) },
+    { name: "Education", value: toPercent(educationAmounts) },
+    { name: "Other", value: toPercent(otherAmounts) },
+  ];
+
   return (
     <div className="flex flex-col mt-8">
-      <div className="md:flex gap-5">
-        {cardsData.map((card, index) => (
-          <DashboardCard key={index} {...card} />
-        ))}
+      <div>
+        <div className="flex gap-5">
+          <div className="bg-[var(--card-bg)] w-full h-auto p-5 rounded-2xl flex justify-between border">
+            <div>
+              <h2>Total Expenses</h2>
+              <div className="flex items-center gap-1">
+                <FaIndianRupeeSign size={"18"} />
+                <h1 className="text-2xl font-bold">{totalAmount}</h1>
+              </div>
+              <p className="text-[var(--secondary-text-color)] text-sm">
+                All time total
+              </p>
+            </div>
+            <FaIndianRupeeSign />
+          </div>
+          <div className="bg-[var(--card-bg)] w-full h-auto p-5 rounded-2xl flex justify-between border">
+            <div>
+              <h2>This Month</h2>
+              <div className="flex items-center gap-1">
+                <FaIndianRupeeSign size={"18"} />
+                <h1 className="text-2xl font-bold">5240</h1>
+              </div>
+              <p className="text-[var(--secondary-text-color)] text-sm">
+                0 Transactions
+              </p>
+            </div>
+            <LuCalendar />
+          </div>
+          <div className="bg-[var(--card-bg)] w-full h-auto p-5 rounded-2xl flex justify-between border">
+            <div>
+              <h2>Transactions</h2>
+              <div className="flex items-center gap-1">
+                <FaIndianRupeeSign size={"18"} />
+                <h1 className="text-2xl font-bold">4</h1>
+              </div>
+              <p className="text-[var(--secondary-text-color)] text-sm">
+                Total recorded
+              </p>
+            </div>
+            <LuReceiptIndianRupee />
+          </div>
+          <div className="bg-[var(--card-bg)] w-full h-auto p-5 rounded-2xl flex justify-between border">
+            <div>
+              <h2>Average</h2>
+              <div className="flex items-center gap-1">
+                <FaIndianRupeeSign size={"18"} />
+                <h1 className="text-2xl font-bold">85.52</h1>
+              </div>
+              <p className="text-[var(--secondary-text-color)] text-sm">
+                Per transaction
+              </p>
+            </div>
+            <FaArrowTrendUp />
+          </div>
+        </div>
       </div>
+
       <div className="flex gap-5 mt-10">
         <div className="border w-full p-5 rounded-2xl">
           <div>
@@ -51,83 +136,42 @@ const DashboardHome = () => {
             <p className="text-sm">Breakdown of your spending by category</p>
           </div>
           <div className="flex items-center justify-center">
-            <Chart />
+            <Chart data={chartData} />
           </div>
         </div>
-        <TransactionCard />
+        {/* <TransactionCard /> */}
+        <div className="border w-[45vw] rounded-2xl p-5 h-[430px] overflow-hidden">
+          <h1 className="text-2xl font-bold">Recent Transactions</h1>
+          <p className="text-sm text-gray-500">Your latest expense entries</p>
+
+          <div className="h-[370px] overflow-y-auto mt-4 pr-2">
+            <ul className="flex flex-col gap-3">
+              {myExpenses.map((txn, index) => (
+                // <TransactionItem key={index} {...txn} />
+                <li className="border-b pb-2" key={index}>
+                  <div className="flex justify-between">
+                    <div>
+                      <h2 className="font-bold">{txn.title}</h2>
+                      <div className="flex gap-2">
+                        <span className="px-2 font-bold text-sm text-[var(--text-color)] bg-[var(--bg-sidebar)] border rounded-2xl">
+                          {txn.category}
+                        </span>
+                        <p className="text-sm">{txn.date}</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-1 font-semibold">
+                      <FaIndianRupeeSign />
+                      {txn.amount}
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   );
 };
 
 export default DashboardHome;
-
-// import { FaIndianRupeeSign } from "react-icons/fa6";
-// import { LuCalendar } from "react-icons/lu";
-// import { LuReceiptIndianRupee } from "react-icons/lu";
-// import { FaArrowTrendUp } from "react-icons/fa6";
-
-// const DashboardHome = () => {
-//   return (
-//     <div>
-//       <div className="flex gap-5">
-//         <div className="bg-black w-full h-auto p-5 rounded-2xl flex justify-between">
-//           <div>
-//             <h2>Total Expenses</h2>
-//             <div className="flex items-center gap-1">
-//               <FaIndianRupeeSign size={"18"} />
-//               <h1 className="text-2xl font-bold">240</h1>
-//             </div>
-//             <p className="text-[var(--secondary-text-color)] text-sm">
-//               All time total
-//             </p>
-//           </div>
-//           <FaIndianRupeeSign />
-//         </div>
-
-//         <div className="bg-black w-full h-auto p-5 rounded-2xl flex justify-between">
-//           <div>
-//             <h2>This Month</h2>
-//             <div className="flex items-center gap-1">
-//               <FaIndianRupeeSign size={"18"} />
-//               <h1 className="text-2xl font-bold">5240</h1>
-//             </div>
-//             <p className="text-[var(--secondary-text-color)] text-sm">
-//               0 Transactions
-//             </p>
-//           </div>
-//           <LuCalendar />
-//         </div>
-
-//         <div className="bg-black w-full h-auto p-5 rounded-2xl flex justify-between">
-//           <div>
-//             <h2>Transactions</h2>
-//             <div className="flex items-center gap-1">
-//               <FaIndianRupeeSign size={"18"} />
-//               <h1 className="text-2xl font-bold">4</h1>
-//             </div>
-//             <p className="text-[var(--secondary-text-color)] text-sm">
-//               Total recorded
-//             </p>
-//           </div>
-//           <LuReceiptIndianRupee />
-//         </div>
-//         <div className="bg-black w-full h-auto p-5 rounded-2xl flex justify-between">
-//           <div>
-//             <h2>Average</h2>
-//             <div className="flex items-center gap-1">
-//               <FaIndianRupeeSign size={"18"} />
-//               <h1 className="text-2xl font-bold">85.52</h1>
-//             </div>
-//             <p className="text-[var(--secondary-text-color)] text-sm">
-//               Per transaction
-//             </p>
-//           </div>
-//           <FaArrowTrendUp />
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default DashboardHome;

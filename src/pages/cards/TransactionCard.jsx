@@ -1,11 +1,6 @@
+import { useContext } from "react";
 import { FaIndianRupeeSign } from "react-icons/fa6";
-
-const transactions = Array(12).fill({
-  title: "Grocery Shopping",
-  category: "Food",
-  date: "2024-01-15",
-  amount: 85.85,
-});
+import { StateContext } from "../../context/ExpenseProvider";
 
 const TransactionItem = ({ title, category, date, amount }) => (
   <li className="border-b pb-2">
@@ -28,6 +23,16 @@ const TransactionItem = ({ title, category, date, amount }) => (
 );
 
 const TransactionCard = () => {
+  const { myExpenses } = useContext(StateContext);
+  console.log("Expences are.....", myExpenses);
+  const title = myExpenses[0];
+  const amount = myExpenses[1];
+  const category = myExpenses[2];
+  const date = myExpenses[3];
+
+  const transactions = [
+    { title: title, category: category, date: date, amount: amount },
+  ];
   return (
     <div className="border w-[45vw] rounded-2xl p-5 h-[430px] overflow-hidden">
       <h1 className="text-2xl font-bold">Recent Transactions</h1>
