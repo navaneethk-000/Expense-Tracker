@@ -22,7 +22,7 @@ const Dropdown = ({value,onChange}) => {
         id="dropdown"
         value={value}
         onChange={onChange}
-        className="border p-2 rounded bg-[var(--bg-color)] w-full"
+        className="border p-1 rounded bg-[var(--bg-color)] h-9 w-full"
       >
         <option value="">Select a category</option>
 

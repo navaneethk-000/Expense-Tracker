@@ -20,6 +20,12 @@ const ExpenseProvider = ({ children }) => {
           ...state,
           myExpenses: [...state.myExpenses, action.payload],
         };
+      case "delete_expense":
+        return {
+          ...state,
+          myExpenses: state.myExpenses.filter((_, i) => i !== action.payload),
+        };
+
       default:
         return state;
     }
