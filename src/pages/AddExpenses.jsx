@@ -16,7 +16,6 @@ const AddExpenses = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
 
     dispatch({
       type: "add_expense",
@@ -32,7 +31,6 @@ const AddExpenses = () => {
     const existingExpenses = JSON.parse(localStorage.getItem("expenses")) || [];
     const updatedExpenses = [...existingExpenses, newExpense];
     localStorage.setItem("expenses", JSON.stringify(updatedExpenses));
-    console.log("Local Storagex", newExpense);
 
     navigate("/");
     // Reset the form after dispatch
@@ -40,7 +38,6 @@ const AddExpenses = () => {
       title: newExpense.title,
       amount: newExpense.amount,
       category: newExpense.category,
-      // date: new Date().toISOString().slice(0, 10),
       date: newExpense.date,
     });
   };

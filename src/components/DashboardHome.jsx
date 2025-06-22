@@ -50,6 +50,7 @@ const DashboardHome = () => {
       .reduce((acc, curr) => acc + curr, 0);
 
   const travelAmounts = getCategoryAmounts("Travel");
+  const foodAmounts = getCategoryAmounts("Food");
   const billsAmounts = getCategoryAmounts("Bills");
   const entertainmentAmounts = getCategoryAmounts("Entertainment");
   const shoppingAmounts = getCategoryAmounts("Shopping");
@@ -62,6 +63,7 @@ const DashboardHome = () => {
 
   const chartData = [
     { name: "Travel", value: toPercent(travelAmounts) },
+    { name: "Food", value: toPercent(foodAmounts) },  
     { name: "Bills", value: toPercent(billsAmounts) },
     { name: "Entertainment", value: toPercent(entertainmentAmounts) },
     { name: "Shopping", value: toPercent(shoppingAmounts) },
