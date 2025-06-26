@@ -13,35 +13,26 @@ const DashboardHome = () => {
     return total + (isNaN(amount) ? 0 : amount);
   }, 0);
 
-  <div className="md:flex gap-5">
-    {myExpenses.map((exp, index) => (
-      <div
-        className="bg-[var(--card-bg)] border w-full h-auto p-5 rounded-2xl flex justify-between items-start"
-        key={index}
-      >
-        <div>
-          <h2>{exp.title}</h2>
-          <div className="flex items-center gap-1">
-            <h1 className="text-2xl font-bold">{exp.amount}</h1>
-          </div>
-          <p className="text-[var(--secondary-text-color)] text-sm">
-            {exp.category}
-          </p>
-        </div>
-      </div>
-    ))}
-  </div>;
-
-  const categories = [
-    "Food",
-    "Bills",
-    "Travel",
-    "Entertainment",
-    "Shopping",
-    "Healthcare",
-    "Education",
-    "Other",
-  ];
+  const totalTransaction = myExpenses.length;
+  const average = totalAmount / totalTransaction
+  // <div className="md:flex gap-5">
+  //   {myExpenses.map((exp, index) => (
+  //     <div
+  //       className="bg-[var(--card-bg)] border w-full h-auto p-5 rounded-2xl flex justify-between items-start"
+  //       key={index}
+  //     >
+  //       <div>
+  //         <h2>{exp.title}</h2>
+  //         <div className="flex items-center gap-1">
+  //           <h1 className="text-2xl font-bold">{exp.amount}</h1>
+  //         </div>
+  //         <p className="text-[var(--secondary-text-color)] text-sm">
+  //           {exp.category}
+  //         </p>
+  //       </div>
+  //     </div>
+  //   ))}
+  // </div>;
 
   const getCategoryAmounts = (category) =>
     myExpenses
@@ -63,7 +54,7 @@ const DashboardHome = () => {
 
   const chartData = [
     { name: "Travel", value: toPercent(travelAmounts) },
-    { name: "Food", value: toPercent(foodAmounts) },  
+    { name: "Food", value: toPercent(foodAmounts) },
     { name: "Bills", value: toPercent(billsAmounts) },
     { name: "Entertainment", value: toPercent(entertainmentAmounts) },
     { name: "Shopping", value: toPercent(shoppingAmounts) },
@@ -107,7 +98,7 @@ const DashboardHome = () => {
               <h2>Transactions</h2>
               <div className="flex items-center gap-1">
                 <FaIndianRupeeSign size={"18"} />
-                <h1 className="text-2xl font-bold">4</h1>
+                <h1 className="text-2xl font-bold">{totalTransaction}</h1>
               </div>
               <p className="text-[var(--secondary-text-color)] text-sm">
                 Total recorded
@@ -120,7 +111,7 @@ const DashboardHome = () => {
               <h2>Average</h2>
               <div className="flex items-center gap-1">
                 <FaIndianRupeeSign size={"18"} />
-                <h1 className="text-2xl font-bold">85.52</h1>
+                <h1 className="text-2xl font-bold">{average}</h1>
               </div>
               <p className="text-[var(--secondary-text-color)] text-sm">
                 Per transaction

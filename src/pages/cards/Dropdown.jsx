@@ -1,5 +1,4 @@
-
-const Dropdown = ({value,onChange}) => {
+const Dropdown = ({ value, onChange }) => {
   const categories = [
     "Food",
     "Bills",
@@ -10,11 +9,6 @@ const Dropdown = ({value,onChange}) => {
     "Education",
     "Other",
   ];
-//   const [selectedOption, setSelectedOption] = useState("");
-
-//   const handleChange = (event) => {
-//     setSelectedOption(event.target.value);
-//   };
 
   return (
     <div className="ml-1">
@@ -34,10 +28,6 @@ const Dropdown = ({value,onChange}) => {
           );
         })}
       </select>
-
-      {/* {selectedOption && (
-        <p className="mt-4">You selected: {selectedOption}</p>
-      )} */}
     </div>
   );
 };
