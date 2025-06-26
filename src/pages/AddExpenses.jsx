@@ -44,7 +44,7 @@ const AddExpenses = () => {
 
   return (
     <div className="flex items-center justify-center mt-16">
-      <div className="shadow-sm shadow-[#51514d] rounded-2xl p-5 w-[600px]">
+      <div className="shadow-sm shadow-[#51514d] rounded-2xl p-5 w-[450px] md:w-[600px]">
         <h1 className="text-3xl font-bold">New Expense</h1>
         <p className="text-sm text-[var(--secondary-text-color)]">
           Enter the details of your expense below.

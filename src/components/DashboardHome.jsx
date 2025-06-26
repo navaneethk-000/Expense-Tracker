@@ -5,6 +5,10 @@ import Chart from "../pages/charts/Chart";
 import { StateContext } from "../context/ExpenseProvider";
 import { useContext } from "react";
 import LineChartExpense from "../pages/charts/LineChart";
+import { IoMdAdd, IoMdSettings } from "react-icons/io";
+import { HiOutlineCurrencyRupee } from "react-icons/hi";
+import { GrHome } from "react-icons/gr";
+import { Link } from "react-router-dom";
 
 const DashboardHome = () => {
   const { myExpenses } = useContext(StateContext);
@@ -15,13 +19,13 @@ const DashboardHome = () => {
   }, 0);
 
   const totalTransaction = myExpenses.length;
-  const average = totalTransaction > 0 ? Math.round(totalAmount / totalTransaction) : "0";
+  const average =
+    totalTransaction > 0 ? Math.round(totalAmount / totalTransaction) : "0";
   const getCategoryAmounts = (category) =>
     myExpenses
       .filter((item) => item.category === category && item.amount)
       .map((item) => parseFloat(item.amount))
       .reduce((acc, curr) => acc + curr, 0);
-
 
   const travelAmounts = getCategoryAmounts("Travel");
   const foodAmounts = getCategoryAmounts("Food");
@@ -48,6 +52,34 @@ const DashboardHome = () => {
 
   return (
     <div className="flex flex-col mt-8">
+      <div className="md:hidden flex">
+        <div className="flex items-center justify-center ml-6">
+          <ul className="flex mb-5 gap-7">
+            <Link
+              to="/addexpenses"
+              className="flex items-center shadow-sm shadow-[#51514d] rounded-2xl px-2 py-1"
+            >
+              <IoMdAdd />
+              <li>Add Expenses</li>
+            </Link>
+            <Link
+              to="/transactions"
+              className="flex items-center shadow-sm shadow-[#51514d] rounded-2xl px-2 py-1"
+            >
+              <HiOutlineCurrencyRupee />
+              <li>Transactions</li>
+            </Link>
+
+            <Link
+              to="/settings"
+              className="flex items-center shadow-sm shadow-[#51514d] rounded-2xl px-4 py-1 gap-1"
+            >
+              <IoMdSettings />
+              <li>Settings</li>
+            </Link>
+          </ul>
+        </div>
+      </div>
       <div>
         <div className="md:flex gap-5">
           <div className="bg-[var(--card-bg)] w-full h-auto p-5 rounded-2xl flex justify-between shadow-sm shadow-[#51514d] mb-5 md:mb-0">
@@ -117,7 +149,7 @@ const DashboardHome = () => {
           </div>
         </div>
         {/* <TransactionCard /> */}
-        <div className="md:w-[45vw] rounded-2xl p-5 h-[430px] overflow-hidden shadow-sm shadow-[#51514d]" >
+        <div className="md:w-[45vw] rounded-2xl p-5 h-[430px] overflow-hidden shadow-sm shadow-[#51514d]">
           <h1 className="text-2xl font-bold">Recent Transactions</h1>
           <p className="text-sm text-gray-500">Your latest expense entries</p>
 
@@ -125,7 +157,10 @@ const DashboardHome = () => {
             <ul className="flex flex-col gap-3">
               {myExpenses.map((txn, index) => (
                 // <TransactionItem key={index} {...txn} />
-                <li className="shadow-sm shadow-[#51514d] rounded-2xl px-4 py-2 mb-5" key={index}>
+                <li
+                  className="shadow-sm shadow-[#51514d] rounded-2xl px-4 py-2 mb-5"
+                  key={index}
+                >
                   <div className="flex justify-between">
                     <div>
                       <h2 className="font-bold">{txn.title}</h2>
