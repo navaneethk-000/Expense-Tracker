@@ -16,14 +16,14 @@ const Transactions = () => {
   };
 
   return (
-    <div className="flex justify-center mt-10 border p-5 flex-col">
+    <div className="flex justify-center mt-10 shadow-sm shadow-[#51514d] rounded-2xl p-5 flex-col h-[550px]">
       <h1 className="text-2xl font-bold">All Transactions</h1>
       <p className="text-sm text-gray-500 mb-5">Total: {totalAmount}</p>
 
       <div className="flex gap-3 items-center justify-center">
         <input
           type="search"
-          className="border p-1 pl-5 rounded-md w-[49vw]"
+          className="shadow-sm shadow-[#51514d] p-1 pl-5 rounded-md w-[49vw]"
           placeholder="Search transactions..."
         />
         <Dropdown />
@@ -33,7 +33,7 @@ const Transactions = () => {
       <div className="w-[75vw] rounded-2xl p-5 h-[430px] overflow-scroll mb-5">
         <div className="max-h-96 overflow-y-auto">
           <table className="min-w-full table-auto">
-            <thead className="sticky top-0 bg-[var(--card-bg)] z-10">
+            <thead className="sticky top-0 bg-gray-700 text-white z-10">
               <tr>
                 <th className="text-left px-4 py-2">Title</th>
                 <th className="text-left px-4 py-2">Category</th>

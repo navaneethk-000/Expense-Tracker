@@ -14,26 +14,7 @@ const DashboardHome = () => {
   }, 0);
 
   const totalTransaction = myExpenses.length;
-  const average = Math.round(totalAmount / totalTransaction)
-  // <div className="md:flex gap-5">
-  //   {myExpenses.map((exp, index) => (
-  //     <div
-  //       className="bg-[var(--card-bg)] border w-full h-auto p-5 rounded-2xl flex justify-between items-start"
-  //       key={index}
-  //     >
-  //       <div>
-  //         <h2>{exp.title}</h2>
-  //         <div className="flex items-center gap-1">
-  //           <h1 className="text-2xl font-bold">{exp.amount}</h1>
-  //         </div>
-  //         <p className="text-[var(--secondary-text-color)] text-sm">
-  //           {exp.category}
-  //         </p>
-  //       </div>
-  //     </div>
-  //   ))}
-  // </div>;
-
+  const average = totalTransaction > 0 ? Math.round(totalAmount / totalTransaction) : "0";
   const getCategoryAmounts = (category) =>
     myExpenses
       .filter((item) => item.category === category && item.amount)
@@ -67,7 +48,7 @@ const DashboardHome = () => {
     <div className="flex flex-col mt-8">
       <div>
         <div className="flex gap-5">
-          <div className="bg-[var(--card-bg)] w-full h-auto p-5 rounded-2xl flex justify-between border">
+          <div className="bg-[var(--card-bg)] w-full h-auto p-5 rounded-2xl flex justify-between shadow-sm shadow-[#51514d]">
             <div>
               <h2>Total Expenses</h2>
               <div className="flex items-center gap-1">
@@ -80,7 +61,7 @@ const DashboardHome = () => {
             </div>
             <FaIndianRupeeSign />
           </div>
-          <div className="bg-[var(--card-bg)] w-full h-auto p-5 rounded-2xl flex justify-between border">
+          <div className="bg-[var(--card-bg)] w-full h-auto p-5 rounded-2xl flex justify-between shadow-sm shadow-[#51514d]">
             <div>
               <h2>This Month</h2>
               <div className="flex items-center gap-1">
@@ -93,7 +74,7 @@ const DashboardHome = () => {
             </div>
             <LuCalendar />
           </div>
-          <div className="bg-[var(--card-bg)] w-full h-auto p-5 rounded-2xl flex justify-between border">
+          <div className="bg-[var(--card-bg)] w-full h-auto p-5 rounded-2xl flex justify-between shadow-sm shadow-[#51514d]">
             <div>
               <h2>Transactions</h2>
               <div className="flex items-center gap-1">
@@ -106,7 +87,7 @@ const DashboardHome = () => {
             </div>
             <LuReceiptIndianRupee />
           </div>
-          <div className="bg-[var(--card-bg)] w-full h-auto p-5 rounded-2xl flex justify-between border">
+          <div className="bg-[var(--card-bg)] w-full h-auto p-5 rounded-2xl flex justify-between shadow-sm shadow-[#51514d]">
             <div>
               <h2>Average</h2>
               <div className="flex items-center gap-1">
@@ -123,7 +104,7 @@ const DashboardHome = () => {
       </div>
 
       <div className="flex gap-5 mt-10">
-        <div className="border w-full p-5 rounded-2xl">
+        <div className="w-full p-5 rounded-2xl shadow-sm shadow-[#51514d]">
           <div>
             <h1 className="text-2xl font-bold">Expenses by Category</h1>
             <p className="text-sm">Breakdown of your spending by category</p>
@@ -133,7 +114,7 @@ const DashboardHome = () => {
           </div>
         </div>
         {/* <TransactionCard /> */}
-        <div className="border w-[45vw] rounded-2xl p-5 h-[430px] overflow-hidden">
+        <div className="w-[45vw] rounded-2xl p-5 h-[430px] overflow-hidden shadow-sm shadow-[#51514d]" >
           <h1 className="text-2xl font-bold">Recent Transactions</h1>
           <p className="text-sm text-gray-500">Your latest expense entries</p>
 
@@ -141,12 +122,12 @@ const DashboardHome = () => {
             <ul className="flex flex-col gap-3">
               {myExpenses.map((txn, index) => (
                 // <TransactionItem key={index} {...txn} />
-                <li className="border-b pb-2" key={index}>
+                <li className="shadow-sm shadow-[#51514d] rounded-2xl px-4 py-2 mb-5" key={index}>
                   <div className="flex justify-between">
                     <div>
                       <h2 className="font-bold">{txn.title}</h2>
                       <div className="flex gap-2">
-                        <span className="px-2 font-bold text-sm text-[var(--text-color)] bg-[var(--bg-sidebar)] border rounded-2xl">
+                        <span className="px-2 font-bold text-sm text-[var(--text-color)] bg-[var(--bg-sidebar)] shadow-sm shadow-[#51514d] rounded-2xl">
                           {txn.category}
                         </span>
                         <p className="text-sm">{txn.date}</p>

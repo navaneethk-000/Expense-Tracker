@@ -34,7 +34,7 @@ const TransactionCard = () => {
     { title: title, category: category, date: date, amount: amount },
   ];
   return (
-    <div className="border w-[45vw] rounded-2xl p-5 h-[430px] overflow-hidden">
+    <div className="shadow-sm shadow-[#51514d] w-[45vw] rounded-2xl p-5 h-[430px] overflow-hidden">
       <h1 className="text-2xl font-bold">Recent Transactions</h1>
       <p className="text-sm text-gray-500">Your latest expense entries</p>
 

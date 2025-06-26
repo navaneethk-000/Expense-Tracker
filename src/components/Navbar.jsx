@@ -17,7 +17,7 @@ const Navbar = () => {
     setTheme((prev) => (prev === "light" ? "dark" : "light"));
 
   return (
-    <div className="p-[10px] border-b-2 flex justify-between items-center px-5">
+    <div className="p-[10px] shadow-sm shadow-[#51514d] flex justify-between items-center px-5 rounded-2xl mt-2 mx-2">
       <div className="flex items-center gap-2">
         <div>
           <MdOutlineSpaceDashboard size={"25"} />
@@ -33,7 +33,7 @@ const Navbar = () => {
       <div className="flex items-center">
         <button
           onClick={() => navigate("/addexpenses")}
-          className="text-sm border rounded-xl px-2 h-[35px] bg-[var(--text-color)] text-[var(--card-bg)] font-semibold"
+          className="text-sm border rounded-xl px-4 py-1 h-[35px] bg-[var(--text-color)] text-[var(--card-bg)] font-semibold"
         >
           Add Expense
         </button>

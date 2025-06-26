@@ -7,7 +7,7 @@ import { HiOutlineCurrencyRupee } from "react-icons/hi";
 import { IoMdSettings } from "react-icons/io";
 const Sidebar = () => {
   return (
-    <div className="w-[18%] h-[100vh] py-[13px] px-3 bg-[var(--bg-sidebar)]">
+    <div className="w-[18%] h-[98vh] py-[13px] px-3 shadow-sm shadow-[#51514d] rounded-2xl my-2 mx-2">
       <div className="flex items-center gap-2 mb-2">
         <RiMoneyRupeeCircleFill size={"40"} />
         <div className="p-0 m-0">
@@ -17,7 +17,7 @@ const Sidebar = () => {
           </p>
         </div>
       </div>
-      <hr className="w-[17.9vw] text-gray-700" />
+      {/* <hr className="w-[17.3vw] shadow-sm border-[#51514d]" /> */}
 
       <div className="p-2">
         <ul className="p-0 flex flex-col gap-5 mt-4">

@@ -44,7 +44,7 @@ const AddExpenses = () => {
 
   return (
     <div className="flex items-center justify-center mt-16">
-      <div className="border p-5 w-[600px]">
+      <div className="shadow-sm shadow-[#51514d] rounded-2xl p-5 w-[600px]">
         <h1 className="text-3xl font-bold">New Expense</h1>
         <p className="text-sm text-[var(--secondary-text-color)]">
           Enter the details of your expense below.
@@ -59,7 +59,7 @@ const AddExpenses = () => {
             onChange={(e) =>
               setFormData({ ...formData, title: e.target.value })
             }
-            className="border p-2 m-1 mt-2"
+            className="shadow-sm shadow-[#51514d] rounded-md p-2 m-1 mt-2"
           />
 
           <label htmlFor="">Amount </label>
@@ -72,7 +72,7 @@ const AddExpenses = () => {
             onChange={(e) =>
               setFormData({ ...formData, amount: e.target.value })
             }
-            className="border p-2 m-1 mt-2"
+            className="shadow-sm shadow-[#51514d] rounded-md p-2 m-1 mt-2"
           />
 
           <label htmlFor="" className="mb-2">
@@ -92,12 +92,12 @@ const AddExpenses = () => {
             value={formData.date}
             name=""
             id=""
-            className="border p-2 m-1"
+            className="shadow-sm shadow-[#51514d] rounded-md p-2 m-1"
             onChange={(e) => setFormData({ ...formData, date: e.target.value })}
           />
           <button
             type="submit"
-            className="border p-2 m-1 bg-[var(--border)] text-[var(--card-bg)] font-semibold mt-5"
+            className="shadow-sm shadow-[#51514d] rounded-md p-2 m-1 bg-[var(--border)] text-[var(--card-bg)] font-semibold mt-5"
           >
             Add Expense
           </button>
