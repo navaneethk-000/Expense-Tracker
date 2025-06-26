@@ -50,11 +50,12 @@ const AddExpenses = () => {
           Enter the details of your expense below.
         </p>
         <form action="" className="flex flex-col" onSubmit={handleFormSubmit}>
-          <label htmlFor="">Title</label>
+          <label htmlFor="">Expense</label>
           <input
             value={formData.title}
             type="text"
             name=""
+            placeholder="Enter your expense"
             id="title"
             onChange={(e) =>
               setFormData({ ...formData, title: e.target.value })
@@ -68,6 +69,7 @@ const AddExpenses = () => {
             value={formData.amount}
             type="number"
             name=""
+            placeholder="amount"
             id="amount"
             onChange={(e) =>
               setFormData({ ...formData, amount: e.target.value })

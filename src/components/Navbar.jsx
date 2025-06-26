@@ -17,7 +17,7 @@ const Navbar = () => {
     setTheme((prev) => (prev === "light" ? "dark" : "light"));
 
   return (
-    <div className="p-[10px] shadow-sm shadow-[#51514d] flex justify-between items-center px-5 rounded-2xl mt-2 mx-2">
+    <div className="p-[10px] shadow-sm shadow-[#51514d] md:flex justify-between items-center px-5 rounded-2xl mt-2 mx-2 hidden">
       <div className="flex items-center gap-2">
         <div>
           <MdOutlineSpaceDashboard size={"25"} />

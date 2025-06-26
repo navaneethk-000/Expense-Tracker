@@ -4,6 +4,7 @@ import Chart from "../pages/charts/Chart";
 
 import { StateContext } from "../context/ExpenseProvider";
 import { useContext } from "react";
+import LineChartExpense from "../pages/charts/LineChart";
 
 const DashboardHome = () => {
   const { myExpenses } = useContext(StateContext);
@@ -20,6 +21,7 @@ const DashboardHome = () => {
       .filter((item) => item.category === category && item.amount)
       .map((item) => parseFloat(item.amount))
       .reduce((acc, curr) => acc + curr, 0);
+
 
   const travelAmounts = getCategoryAmounts("Travel");
   const foodAmounts = getCategoryAmounts("Food");
@@ -47,8 +49,8 @@ const DashboardHome = () => {
   return (
     <div className="flex flex-col mt-8">
       <div>
-        <div className="flex gap-5">
-          <div className="bg-[var(--card-bg)] w-full h-auto p-5 rounded-2xl flex justify-between shadow-sm shadow-[#51514d]">
+        <div className="md:flex gap-5">
+          <div className="bg-[var(--card-bg)] w-full h-auto p-5 rounded-2xl flex justify-between shadow-sm shadow-[#51514d] mb-5 md:mb-0">
             <div>
               <h2>Total Expenses</h2>
               <div className="flex items-center gap-1">
@@ -61,7 +63,7 @@ const DashboardHome = () => {
             </div>
             <FaIndianRupeeSign />
           </div>
-          <div className="bg-[var(--card-bg)] w-full h-auto p-5 rounded-2xl flex justify-between shadow-sm shadow-[#51514d]">
+          <div className="bg-[var(--card-bg)] w-full h-auto p-5 rounded-2xl flex justify-between shadow-sm shadow-[#51514d] mb-5 md:mb-0">
             <div>
               <h2>This Month</h2>
               <div className="flex items-center gap-1">
@@ -74,7 +76,7 @@ const DashboardHome = () => {
             </div>
             <LuCalendar />
           </div>
-          <div className="bg-[var(--card-bg)] w-full h-auto p-5 rounded-2xl flex justify-between shadow-sm shadow-[#51514d]">
+          <div className="bg-[var(--card-bg)] w-full h-auto p-5 rounded-2xl flex justify-between shadow-sm shadow-[#51514d] mb-5 md:mb-0">
             <div>
               <h2>Transactions</h2>
               <div className="flex items-center gap-1">
@@ -87,7 +89,7 @@ const DashboardHome = () => {
             </div>
             <LuReceiptIndianRupee />
           </div>
-          <div className="bg-[var(--card-bg)] w-full h-auto p-5 rounded-2xl flex justify-between shadow-sm shadow-[#51514d]">
+          <div className="bg-[var(--card-bg)] w-full h-auto p-5 rounded-2xl flex justify-between shadow-sm shadow-[#51514d] mb-5 md:mb-0">
             <div>
               <h2>Average</h2>
               <div className="flex items-center gap-1">
@@ -103,18 +105,19 @@ const DashboardHome = () => {
         </div>
       </div>
 
-      <div className="flex gap-5 mt-10">
-        <div className="w-full p-5 rounded-2xl shadow-sm shadow-[#51514d]">
+      <div className="md:flex gap-5 mt-10">
+        <div className="w-full p-5 rounded-2xl shadow-sm shadow-[#51514d] mb-5 md:mb-0">
           <div>
             <h1 className="text-2xl font-bold">Expenses by Category</h1>
             <p className="text-sm">Breakdown of your spending by category</p>
           </div>
           <div className="flex items-center justify-center">
             <Chart data={chartData} />
+            {/* <LineChartExpense data={chartData}/> */}
           </div>
         </div>
         {/* <TransactionCard /> */}
-        <div className="w-[45vw] rounded-2xl p-5 h-[430px] overflow-hidden shadow-sm shadow-[#51514d]" >
+        <div className="md:w-[45vw] rounded-2xl p-5 h-[430px] overflow-hidden shadow-sm shadow-[#51514d]" >
           <h1 className="text-2xl font-bold">Recent Transactions</h1>
           <p className="text-sm text-gray-500">Your latest expense entries</p>
 
