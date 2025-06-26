@@ -103,7 +103,7 @@ const DashboardHome = () => {
                 <h1 className="text-2xl font-bold">35240</h1>
               </div>
               <p className="text-[var(--secondary-text-color)] text-sm">
-                0 Transactions
+                {totalTransaction} Transactions
               </p>
             </div>
             <LuCalendar />
