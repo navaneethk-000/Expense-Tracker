@@ -30,7 +30,7 @@ const Transactions = () => {
         <input type="date" name="" id="" className="w-1/6 pl-10" />
       </div>
 
-      <div className="w-[75vw] rounded-2xl p-5 h-[430px] overflow-scroll mb-5">
+      <div className="md:w-[75vw] rounded-2xl p-5 h-[430px] overflow-scroll mb-5">
         <div className="max-h-96 overflow-y-auto">
           <table className="min-w-full table-auto">
             <thead className="sticky top-0 bg-gray-700 text-white z-10">
