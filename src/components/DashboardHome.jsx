@@ -14,7 +14,7 @@ const DashboardHome = () => {
   }, 0);
 
   const totalTransaction = myExpenses.length;
-  const average = totalAmount / totalTransaction
+  const average = Math.round(totalAmount / totalTransaction)
   // <div className="md:flex gap-5">
   //   {myExpenses.map((exp, index) => (
   //     <div
@@ -85,7 +85,7 @@ const DashboardHome = () => {
               <h2>This Month</h2>
               <div className="flex items-center gap-1">
                 <FaIndianRupeeSign size={"18"} />
-                <h1 className="text-2xl font-bold">5240</h1>
+                <h1 className="text-2xl font-bold">35240</h1>
               </div>
               <p className="text-[var(--secondary-text-color)] text-sm">
                 0 Transactions
