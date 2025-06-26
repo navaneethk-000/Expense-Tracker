@@ -57,10 +57,10 @@ const DashboardHome = () => {
           <ul className="flex mb-5 gap-7">
             <Link
               to="/addexpenses"
-              className="flex items-center shadow-sm shadow-[#51514d] rounded-2xl px-2 py-1"
+              className="flex items-center shadow-sm shadow-[#51514d] rounded-2xl px-2 py-1 gap-1"
             >
               <IoMdAdd />
-              <li>Add Expenses</li>
+              <li>Expenses</li>
             </Link>
             <Link
               to="/transactions"
