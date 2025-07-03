@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { DispatchContext, StateContext } from "../context/ExpenseProvider";
 import Dropdown from "./cards/Dropdown";
 import { MdDeleteOutline } from "react-icons/md";
@@ -15,6 +15,29 @@ const Transactions = () => {
     dispatch({ type: "delete_expense", payload: indexToDlt });
   };
 
+  const [sortCategory, setSortCategory] = useState("");
+  const [searchTerm, setsearchTerm] = useState("");
+
+  const filteredExpense = myExpenses.filter((exp) => {
+    const matchesSearch = exp.title
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase());
+    const matchesCategory = sortCategory ? exp.category === sortCategory : true;
+
+    return matchesSearch && matchesCategory;
+  });
+
+  const categories = [
+    "Food",
+    "Bills",
+    "Travel",
+    "Entertainment",
+    "Shopping",
+    "Healthcare",
+    "Education",
+    "Other",
+  ];
+
   return (
     <div className="flex justify-center mt-10 shadow-sm shadow-[#51514d] rounded-2xl p-5 flex-col h-[550px]">
       <h1 className="text-2xl font-bold">All Transactions</h1>
@@ -25,13 +48,30 @@ const Transactions = () => {
           type="search"
           className="shadow-sm shadow-[#51514d] p-1 pl-5 rounded-md w-[49vw]"
           placeholder="Search transactions..."
+          onChange={(e) => setsearchTerm(e.target.value)}
         />
-        <Dropdown />
-        <input type="date" name="" id="" className="w-1/6 pl-10" />
+
+        <div className="ml-1">
+          <select
+            id="dropdown"
+            className="shadow-sm shadow-[#51514d] rounded-md p-1 bg-[var(--bg-color)] h-9 w-full"
+            onChange={(e) => setSortCategory(e.target.value)}
+          >
+            <option value="">Select a category</option>
+
+            {categories.map((item, index) => {
+              return (
+                <option key={index} value={item}>
+                  {item}
+                </option>
+              );
+            })}
+          </select>
+        </div>
       </div>
 
       <div className="md:w-[75vw] rounded-2xl p-5 h-[430px] overflow-scroll mb-5">
-        <div className="max-h-96 overflow-y-auto">
+        <div className="max-h-96 overflow-y-clip">
           <table className="min-w-full table-auto">
             <thead className="sticky top-0 bg-gray-700 text-white z-10">
               <tr>
@@ -42,20 +82,31 @@ const Transactions = () => {
               </tr>
             </thead>
             <tbody>
-              {myExpenses.map((exp, index) => (
-                <tr key={index} className="">
-                  <td className="px-4 py-2">{exp.title}</td>
-                  <td className="px-4 py-2">{exp.category}</td>
-                  <td className="px-4 py-2">{exp.date}</td>
-                  <td className="text-right px-4 py-2">{exp.amount}</td>
-                  <button
-                    className="flex items-center justify-center mt-2.5"
-                    onClick={() => handleDltBtn(index)}
+              {filteredExpense.length === 0 ? (
+                <tr>
+                  <td
+                    colSpan="4"
+                    className="text-center py-4 text-gray-500 font-semibold"
                   >
-                    <MdDeleteOutline className="text-red-600" />
-                  </button>
+                    NO DATA AVAILABLE
+                  </td>
                 </tr>
-              ))}
+              ) : (
+                filteredExpense.map((exp, index) => (
+                  <tr key={index}>
+                    <td className="px-4 py-2">{exp.title}</td>
+                    <td className="px-4 py-2">{exp.category}</td>
+                    <td className="px-4 py-2">{exp.date}</td>
+                    <td className="text-right px-4 py-2">{exp.amount}</td>
+                    <button
+                      className="flex items-center justify-center mt-2.5"
+                      onClick={() => handleDltBtn(index)}
+                    >
+                      <MdDeleteOutline className="text-red-600" />
+                    </button>
+                  </tr>
+                ))
+              )}
             </tbody>
           </table>
         </div>
