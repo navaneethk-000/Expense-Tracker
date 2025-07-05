@@ -6,12 +6,21 @@
 
 :root {
   --text-color: black;
-  --bg-color: white;
+  --bg-color: #f5f6fa;
+  /* --bg-color: #e9ecef; */
   --secondary-text-color: #27272a;
   --border: black;
   --bg-sidebar: white;
   --card-bg: white;
 }
+/* :root {
+  --text-color: black;
+  --bg-color: white;
+  --secondary-text-color: #27272a;
+  --border: black;
+  --bg-sidebar: white;
+  --card-bg: white;
+} */
 
 [data-theme="dark"] {
   --text-color: white;

@@ -5,6 +5,7 @@ import DashboardHome from "../components/DashboardHome";
 import AddExpenses from "../pages/AddExpenses";
 import Transactions from "../pages/Transactions";
 import { ExpenseProvider } from "../context/ExpenseProvider";
+import AddIncom from "../pages/AddIncom";
 
 const AppRoutes = () => {
   return (
@@ -14,6 +15,7 @@ const AppRoutes = () => {
           <Route index element={<DashboardHome />} />
           <Route path="settings" element={<Settings />} />
           <Route path="addexpenses" element={<AddExpenses />} />
+          <Route path="addincome" element={<AddIncom/>}/>
           <Route path="transactions" element={<Transactions />} />
         </Route>
       </Routes>

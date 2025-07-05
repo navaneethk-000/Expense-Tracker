@@ -17,29 +17,18 @@ const AddExpenses = () => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
-    dispatch({
-      type: "add_expense",
-      payload: formData,
-    });
-
     const newExpense = {
-      title: formData.title.trim(),
+      title: formData.title.trim(),//Trim to avoid unwanted white spaces
       amount: formData.amount.trim(),
       category: formData.category.trim(),
       date: formData.date,
     };
-    const existingExpenses = JSON.parse(localStorage.getItem("expenses")) || [];
-    const updatedExpenses = [...existingExpenses, newExpense];
-    localStorage.setItem("expenses", JSON.stringify(updatedExpenses));
+    dispatch({
+      type: "add_expense",
+      payload: newExpense,
+    });
 
     navigate("/");
-    // Reset the form after dispatch
-    setFormData({
-      title: newExpense.title,
-      amount: newExpense.amount,
-      category: newExpense.category,
-      date: newExpense.date,
-    });
   };
 
   return (

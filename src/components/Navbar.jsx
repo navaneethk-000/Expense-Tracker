@@ -21,34 +21,28 @@ const Navbar = () => {
     <div>
       <div>
         <div className="flex justify-between px-5 md:hidden shadow-sm shadow-[#51514d] p-5 items-center pt-5">
-        <div className="flex">
-          <RiMoneyRupeeCircleFill size={"20"} />
-          <div className="p-0 m-0">
-            <h1 className="text-sm font-bold">Expense Tracker</h1>
+          <div className="flex">
+            <RiMoneyRupeeCircleFill size={"20"} />
+            <div className="p-0 m-0">
+              <h1 className="text-sm font-bold">Expense Tracker</h1>
+            </div>
+          </div>
+          <div className="flex items-center gap-5">
+            <button
+              type="submit"
+              className="shadow-sm text-sm shadow-[#51514d] rounded-md bg-[var(--border)] text-[var(--card-bg)] font-semibold py-1 px-2"
+              onClick={() => navigate("/addexpenses")}
+            >
+              Add Expense
+            </button>
+            <button
+              onClick={toggleTheme}
+              className="flex rounded-full transition-all cursor-pointer"
+            >
+              <CgDarkMode />
+            </button>
           </div>
         </div>
-       <div className="flex items-center gap-5">
-         <button
-          type="submit"
-          className="shadow-sm text-sm shadow-[#51514d] rounded-md bg-[var(--border)] text-[var(--card-bg)] font-semibold py-1 px-2"
-          onClick={() => navigate("/addexpenses")}
-        >
-          Add Expense
-          
-        </button>
-         <button
-            onClick={toggleTheme}
-            className="flex rounded-full transition-all cursor-pointer"
-          >
-            <CgDarkMode />
-          </button>
-       </div>
-        
-      </div>
-     
-
-
-
       </div>
       <div className="p-[10px] shadow-sm shadow-[#51514d] md:flex justify-between items-center px-5 rounded-2xl mt-2 mx-2 hidden">
         <div className="flex items-center gap-2">
@@ -64,6 +58,12 @@ const Navbar = () => {
         </div>
 
         <div className="flex items-center">
+          <button
+            onClick={() => navigate("/addincome")}
+            className="text-sm border rounded-xl px-4 py-1 h-[35px] bg-[var(--text-color)] text-[var(--card-bg)] font-semibold mr-2"
+          >
+            Add Income
+          </button>
           <button
             onClick={() => navigate("/addexpenses")}
             className="text-sm border rounded-xl px-4 py-1 h-[35px] bg-[var(--text-color)] text-[var(--card-bg)] font-semibold"
