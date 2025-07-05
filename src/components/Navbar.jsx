@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { MdOutlineSpaceDashboard } from "react-icons/md";
 import { CgDarkMode } from "react-icons/cg";
 import { useNavigate } from "react-router-dom";
+import { IoMdAdd, IoMdSettings } from "react-icons/io";
 import { RiMoneyRupeeCircleFill } from "react-icons/ri";
 const Navbar = () => {
   const [theme, setTheme] = useState(
@@ -21,19 +22,19 @@ const Navbar = () => {
     <div>
       <div>
         <div className="flex justify-between px-5 md:hidden shadow-sm shadow-[#51514d] p-5 items-center pt-5">
-          <div className="flex">
-            <RiMoneyRupeeCircleFill size={"20"} />
+          <div className="flex items-center gap-0.5">
+            <RiMoneyRupeeCircleFill size={"28"} />
             <div className="p-0 m-0">
-              <h1 className="text-sm font-bold">Expense Tracker</h1>
+              <h1 className="text-2xl font-bold">Expense Tracker</h1>
             </div>
           </div>
           <div className="flex items-center gap-5">
             <button
               type="submit"
-              className="shadow-sm text-sm shadow-[#51514d] rounded-md bg-[var(--border)] text-[var(--card-bg)] font-semibold py-1 px-2"
+              className="shadow-sm text-sm shadow-[#51514d] rounded-full bg-[var(--border)] text-[var(--card-bg)] font-semibold p-1"
               onClick={() => navigate("/addexpenses")}
             >
-              Add Expense
+               <IoMdAdd size={"25"}/>
             </button>
             <button
               onClick={toggleTheme}
