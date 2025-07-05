@@ -60,7 +60,7 @@ const DashboardHome = () => {
     <div className="flex flex-col gap-5">
       <div className="md:hidden flex">
         <div className="flex items-center justify-center">
-          <ul className="flex gap-2">
+          <ul className="flex gap-2 items-center justify-center">
             <Link
               to="/addincome"
               className="flex items-center shadow-sm shadow-[#51514d] rounded-2xl px-2 py-1 gap-1 text-sm"
