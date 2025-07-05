@@ -35,10 +35,10 @@ const Sidebar = () => {
             <li>Transactions</li>
           </Link>
 
-          <Link to="/settings" className="flex gap-2.5 items-center">
+          {/* <Link to="/settings" className="flex gap-2.5 items-center">
           <IoMdSettings/>
             <li>Settings</li>
-          </Link>
+          </Link> */}
         </ul>
       </div>
     </div>

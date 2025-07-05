@@ -6,7 +6,7 @@ const AddIncom = () => {
   const dispatch = useContext(DispatchContext);
 
   const [income, setincome] = useState("");
-  const navigate = useNavigate("")
+  const navigate = useNavigate("");
 
   const handleIncomeSubmit = (e) => {
     e.preventDefault();
@@ -16,7 +16,7 @@ const AddIncom = () => {
       type: "add_income",
       payload: newIncome,
     });
-    navigate("/")
+    navigate("/");
   };
   return (
     <div className="flex items-center justify-center mt-16 h-[50vh]">
