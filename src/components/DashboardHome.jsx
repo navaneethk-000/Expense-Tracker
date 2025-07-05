@@ -58,7 +58,7 @@ const DashboardHome = () => {
 
   return (
     <div className="flex flex-col gap-5">
-      <div className="md:hidden flex">
+      <div className="md:hidden flex items-center justify-center">
         <div className="flex items-center justify-center">
           <ul className="flex gap-2 items-center justify-center">
             <Link
