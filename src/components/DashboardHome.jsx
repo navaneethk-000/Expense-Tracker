@@ -62,12 +62,19 @@ const DashboardHome = () => {
         <div className="flex items-center justify-center">
           <ul className="flex gap-2">
             <Link
+              to="/addincome"
+              className="flex items-center shadow-sm shadow-[#51514d] rounded-2xl px-2 py-1 gap-1 text-sm"
+            >
+              <IoMdAdd />
+              <li>Income</li>
+            </Link>
+            {/* <Link
               to="/addexpenses"
               className="flex items-center shadow-sm shadow-[#51514d] rounded-2xl px-2 py-1 gap-1 text-sm"
             >
               <IoMdAdd />
               <li>Expenses</li>
-            </Link>
+            </Link> */}
             <Link
               to="/transactions"
               className="flex items-center shadow-sm shadow-[#51514d] rounded-2xl px-2 py-1 text-sm"
