@@ -59,18 +59,18 @@ const DashboardHome = () => {
   return (
     <div className="flex flex-col gap-5">
       <div className="md:hidden flex">
-        <div className="flex items-center justify-center ml-6">
-          <ul className="flex mb-5 gap-7">
+        <div className="flex items-center justify-center">
+          <ul className="flex gap-2">
             <Link
               to="/addexpenses"
-              className="flex items-center shadow-sm shadow-[#51514d] rounded-2xl px-2 py-1 gap-1"
+              className="flex items-center shadow-sm shadow-[#51514d] rounded-2xl px-2 py-1 gap-1 text-sm"
             >
               <IoMdAdd />
               <li>Expenses</li>
             </Link>
             <Link
               to="/transactions"
-              className="flex items-center shadow-sm shadow-[#51514d] rounded-2xl px-2 py-1"
+              className="flex items-center shadow-sm shadow-[#51514d] rounded-2xl px-2 py-1 text-sm"
             >
               <HiOutlineCurrencyRupee />
               <li>Transactions</li>
@@ -78,7 +78,7 @@ const DashboardHome = () => {
 
             <Link
               to="/settings"
-              className="flex items-center shadow-sm shadow-[#51514d] rounded-2xl px-4 py-1 gap-1"
+              className="flex items-center shadow-sm shadow-[#51514d] rounded-2xl px-4 py-1 gap-1 text-sm text-center"
             >
               <IoMdSettings />
               <li>Settings</li>
@@ -214,7 +214,7 @@ const DashboardHome = () => {
                     </div>
                     <div className="flex items-center gap-1 font-semibold">
                       <FaIndianRupeeSign />
-                      {txn.amount} 
+                      {txn.amount}
                     </div>
                   </div>
                 </li>
